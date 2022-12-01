@@ -14,10 +14,13 @@ import {
 
 import { auth } from "../firebase";
 
+//Background
+import { LinearGradient } from "expo-linear-gradient";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
 } from "firebase/auth";
 
 const LoginScreen = ({ navigation }) => {
@@ -32,7 +35,7 @@ const LoginScreen = ({ navigation }) => {
         console.log(user);
         navigation.reset({
           index: 0,
-          routes: [{ name: "Home" }],
+          routes: [{ name: "Tipo" }],
         });
         //console.log(user);
       })
@@ -49,7 +52,7 @@ const LoginScreen = ({ navigation }) => {
         const user = userCredential.user;
         navigation.reset({
           index: 0,
-          routes: [{ name: "Home" }],
+          routes: [{ name: "Tipo" }],
         });
         console.log(user);
       })
@@ -70,49 +73,49 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.container}
+      <LinearGradient
+        // Background Linear Gradient
+        colors={["rgba(217,175,217,1)", "rgba(151,217,225,1)"]}
+        style={styles.background}
       >
-        <ImageBackground
-          source={require("../assets/BackG.jpg")}
-          resizeMode="cover"
-          style={styles.image}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={styles.container}
         >
-          <Image
-            style={{ width: "50%", height: "30%" }}
-            resizeMode="contain"
-            source={require("../assets/Huella.png")}
-          />
-          <View style={styles.inputContainer}>
-            <TextInput
-              placeholder="Email"
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-              style={styles.input}
-            ></TextInput>
-            <TextInput
-              placeholder="Password"
-              value={password}
-              onChangeText={(text) => setPassword(text)}
-              style={styles.input}
-              secureTextEntry
-            ></TextInput>
-          </View>
+            <Image
+              style={{ width: "80%", height: "30%" }}
+              resizeMode="contain"
+              source={require("../assets/Logo.png")}
+            />
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Email"
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+                style={styles.input}
+              ></TextInput>
+              <TextInput
+                placeholder="Password"
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+                style={styles.input}
+                secureTextEntry
+              ></TextInput>
+            </View>
 
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity onPress={handleSignIn} style={styles.button}>
-              <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={handleCreateAccount}
-              style={[styles.button, styles.buttonOutline]}
-            >
-              <Text style={styles.buttonOutlineText}>Register</Text>
-            </TouchableOpacity>
-          </View>
-        </ImageBackground>
-      </KeyboardAvoidingView>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity onPress={handleSignIn} style={styles.button}>
+                <Text style={styles.buttonText}>Login</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={handleCreateAccount}
+                style={[styles.button, styles.buttonOutline]}
+              >
+                <Text style={styles.buttonOutlineText}>Register</Text>
+              </TouchableOpacity>
+            </View>
+        </KeyboardAvoidingView>
+      </LinearGradient>
     </TouchableWithoutFeedback>
   );
 };
@@ -174,5 +177,12 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  background: {
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+    flex: 1,
   },
 });

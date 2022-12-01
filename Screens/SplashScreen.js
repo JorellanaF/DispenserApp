@@ -1,6 +1,9 @@
 import React from "react";
 import { StyleSheet, Image, View, ImageBackground } from "react-native";
 
+//Background
+import { LinearGradient } from "expo-linear-gradient";
+
 //import { auth } from "../../firebase";
 
 //const image = { require("../../assets/Logo.png") };
@@ -26,19 +29,19 @@ export default class SplashScreen extends React.Component {
 
   render() {
     return (
-      <ImageBackground
-        source={require("../assets/BackG.jpg")}
-        resizeMode="cover"
-        style={styles.image}
-      >
-        <View style={styles.container}>
+      <LinearGradient
+      // Background Linear Gradient
+      colors={[ "rgba(217,175,217,1)", "rgba(151,217,225,1)"]}
+      style={styles.background}
+    >
+      <View style={styles.container}>
         <Image
-          style={{ width: "50%", height: "50%" }}
+          style={{ width: "80%", height: "50%" }}
           resizeMode="contain"
-          source={require("../assets/Huella.png")}
+          source={require("../assets/Logo.png")}
         />
         </View>
-      </ImageBackground>
+    </LinearGradient>
     );
   }
 }
@@ -56,5 +59,13 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     justifyContent: "center",
+  },
+
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    height: "100%",
   },
 });
