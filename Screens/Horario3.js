@@ -68,8 +68,8 @@ export default function Horario1({ navigation }) {
     client.connect({
       onSuccess: onConnect,
       useSSL: true,
-      userName: "Kevin_Orellana",
-      password: "aio_uCJP52mWjLMKxbQ9CZZ2rgk306DA",
+      userName: "{Username_ADAFRUIT}",
+      password: "{KEY_ADAFRUIT}",
     });
   };
 
@@ -80,8 +80,8 @@ export default function Horario1({ navigation }) {
     client.connect({
       onSuccess: onConnect,
       useSSL: true,
-      userName: "Kevin_Orellana",
-      password: "aio_uCJP52mWjLMKxbQ9CZZ2rgk306DA",
+      userName: "{Username_ADAFRUIT}",
+      password: "{KEY_ADAFRUIT}",
     });
 
     navigation.reset({
@@ -107,29 +107,7 @@ export default function Horario1({ navigation }) {
     const minuto3 = date3.getMinutes().toString();
     client.publish(Minuto3, minuto3);
   };
-
-  /*const onConnect = () => {
-    console.log("onConnect");
-    console.log("HAY");
-    if (textButton == "OFF") {
-      setTextButton("ON");
-      client.publish(led, "ON");
-      console.log("ENCENDIDO");
-    } else {
-      setTextButton("OFF");
-      client.publish(led, "OFF");
-      console.log("APAGADO");
-    }
-    console.log("---------------------------");
-    //client.publish(led, "OFF");
-  };*/
-
-  //const [distancia, setDistancia] = useState(0);
-
-  //const client = new Paho.MQTT.Client("io.adafruit.com", 443, "883483772");
-  //client.onMessageArrived = onMessageArrived;
-  //client.connect({ onSuccess:onConnect, useSSL: true, userName: "jorellanaf", password: "aio_WMyL14ylmVooCbX3GQ1WbBz2ikOB" });
-
+  
   const changeDate = (hora) => {
     setDate(hora);
   };
